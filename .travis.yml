@@ -21,8 +21,6 @@ deploy:
     - target/tweetsched-dto-1.0.$TRAVIS_BUILD_NUMBER.jar
   name: tweetsched-dto-1.0.$TRAVIS_BUILD_NUMBER
   skip-cleanup: true
-  on:
-    tags: true
 
 notifications:
   email:
