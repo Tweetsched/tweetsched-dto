@@ -16,8 +16,8 @@ deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
   file:
-    - target/tweetsched-dto-1.0. $TRAVIS_BUILD_NUMBER.jar
-  name: tweetsched-dto-1.0. $TRAVIS_BUILD_NUMBER
+    - target/tweetsched-dto-1.0.$TRAVIS_BUILD_NUMBER.jar
+  name: tweetsched-dto-1.0.$TRAVIS_BUILD_NUMBER
   skip-cleanup: true
   on:
     tags: true
