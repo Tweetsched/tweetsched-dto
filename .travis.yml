@@ -7,13 +7,6 @@ branches:
 
 before_install: mvn package -DskipTests=true -DbuildNumber=$TRAVIS_BUILD_NUMBER
 
-before_deploy:
-  - git config --local user.name "$USER_NAME"
-  - git config --local user.email "$USER_EMAIL"
-  - export GIT_TAG=build-$TRAVIS_BRANCH-$(date -u "+%Y-%m-%d-%H-%M-%S")-$TRAVIS_BUILD_NUMBER
-  - git tag $GIT_TAG -a -m "Generated tag from TravisCI build $TRAVIS_BUILD_NUMBER"
-  - git push origin $GIT_TAG
-
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
