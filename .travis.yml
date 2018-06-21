@@ -8,14 +8,16 @@ branches:
 before_install: mvn package -DskipTests=true -DbuildNumber=$TRAVIS_BUILD_NUMBER
 
 before_deploy:
+  - git config --local user.name $USER_NAME
+  - git config --local user.email $USER_EMAIL
   - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
 
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
   file:
-    - target/tweetsched-dto-1.0.$TRAVIS_BUILD_NUMBER.jar
-  name: tweetsched-dto-1.0.$TRAVIS_BUILD_NUMBER
+    - target/tweetsched-dto-1.0. $TRAVIS_BUILD_NUMBER.jar
+  name: tweetsched-dto-1.0. $TRAVIS_BUILD_NUMBER
   skip-cleanup: true
   on:
     tags: true
