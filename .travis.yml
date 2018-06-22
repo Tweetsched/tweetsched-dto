@@ -4,10 +4,11 @@ jdk: oraclejdk8
 before_install: mvn package -DskipTests=true -DbuildNumber=$TRAVIS_BUILD_NUMBER
 
 before_deploy:
-  # Set up git user name and tag this commit
-  - git config --local user.name "Gleb Kosteiko"
-  - git config --local user.email "gleb.kosteiko@gmail.com"
-  - git tag "1.0.$TRAVIS_BUILD_NUMBER"
+  - git config --global user.name "Gleb Kosteiko"
+  - git config --global user.email "gleb.kosteiko@gmail.com"
+  - git config --global push.default simple
+  - git tag "1.0.$TRAVIS_BUILD_NUMBER" -a -m "Tag Generated from TravisCI for build $TRAVIS_BUILD_NUMBER"
+  - git push origin master && git push origin master --tags
 
 deploy:
   provider: releases
@@ -17,7 +18,7 @@ deploy:
   name: tweetsched-dto-1.0.$TRAVIS_BUILD_NUMBER
   skip-cleanup: true
   on:
-    tags: true
+    tags: false
     repo: Tweetsched/tweetsched-dto
     branches:
       only:
