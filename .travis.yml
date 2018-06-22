@@ -18,6 +18,7 @@ deploy:
   skip-cleanup: true
   on:
     tags: true
+    repo: Tweetsched/tweetsched-dto
     branches:
       only:
         - master
