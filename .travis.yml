@@ -1,10 +1,6 @@
 language: java
 jdk: oraclejdk8
 
-branches:
-  only:
-    - master
-
 before_install: mvn package -DskipTests=true -DbuildNumber=$TRAVIS_BUILD_NUMBER
 
 before_deploy:
@@ -22,6 +18,9 @@ deploy:
   skip-cleanup: true
   on:
     tags: true
+    branches:
+      only:
+        - master
 
 notifications:
   email:
