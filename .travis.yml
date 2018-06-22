@@ -1,14 +1,11 @@
 language: java
 jdk: oraclejdk8
 
-before_install: mvn package -DskipTests=true -DbuildNumber=$TRAVIS_BUILD_NUMBER
+branches:
+  only:
+    - master
 
-before_deploy:
-  - git config --global user.name "Gleb Kosteiko"
-  - git config --global user.email "gleb.kosteiko@gmail.com"
-  - git config --global push.default simple
-  - git tag "1.0.$TRAVIS_BUILD_NUMBER" -a -m "Tag Generated from TravisCI for build $TRAVIS_BUILD_NUMBER"
-  - git push origin master && git push origin master --tags
+before_install: mvn package -DskipTests=true -DbuildNumber=$TRAVIS_BUILD_NUMBER
 
 deploy:
   provider: releases
@@ -18,11 +15,7 @@ deploy:
   name: tweetsched-dto-1.0.$TRAVIS_BUILD_NUMBER
   skip-cleanup: true
   on:
-    tags: false
-    repo: Tweetsched/tweetsched-dto
-    branches:
-      only:
-        - master
+    tags: true
 
 notifications:
   email:
