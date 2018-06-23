@@ -15,7 +15,7 @@ public class ProfileConfig {
     private String consumerKey;
     private String consumerSecret;
     private String accessToken;
-    private String accessSecret;
+    private String accessTokenSecret;
 
     public ProfileConfig() {}
 
@@ -67,11 +67,11 @@ public class ProfileConfig {
         this.accessToken = accessToken;
     }
 
-    public String getAccessSecret() {
-        return accessSecret;
+    public String getAccessTokenSecret() {
+        return accessTokenSecret;
     }
 
-    public void setAccessSecret(String accessSecret) {
-        this.accessSecret = accessSecret;
+    public void setAccessTokenSecret(String accessTokenSecret) {
+        this.accessTokenSecret = accessTokenSecret;
     }
 }
