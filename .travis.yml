@@ -10,9 +10,9 @@ before_install: mvn package -DskipTests=true -DbuildNumber=$TRAVIS_BUILD_NUMBER
 before_deploy:
   - git config --local user.name "$USER_NAME"
   - git config --local user.email "$USER_EMAIL"
-  - export GIT_TAG=1.0.$TRAVIS_BUILD_NUMBER
-  - git tag $GIT_TAG -a -m "Generated tag from TravisCI build $TRAVIS_BUILD_NUMBER"
-  - git push origin $GIT_TAG
+  - export TRAVIS_TAG=1.0.$TRAVIS_BUILD_NUMBER
+  - git tag $TRAVIS_TAG -a -m "Generated tag from TravisCI build $TRAVIS_BUILD_NUMBER"
+  - git push origin $TRAVIS_TAG
 
 deploy:
   provider: releases
