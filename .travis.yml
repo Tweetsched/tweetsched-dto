@@ -12,7 +12,7 @@ before_deploy:
 - echo "$TRAVIS_TAG" "$TRAVIS_COMMIT"
 - git config --local user.name "$USER_NAME"
 - git config --local user.email "$USER_EMAIL"
-- git tag "$TRAVIS_TAG" $TRAVIS_COMMIT"
+- git tag "$TRAVIS_TAG" "$TRAVIS_COMMIT"
 
 deploy:
   provider: releases
