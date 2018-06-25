@@ -8,19 +8,26 @@ branches:
 before_install: mvn package -DskipTests=true -DbuildNumber=$TRAVIS_BUILD_NUMBER
 
 before_deploy:
-  - git config --local user.name "$USER_NAME"
-  - git config --local user.email "$USER_EMAIL"
-  - export TRAVIS_TAG=1.0.$TRAVIS_BUILD_NUMBER
-  - git tag $TRAVIS_TAG -a -m "Generated tag from TravisCI build $TRAVIS_BUILD_NUMBER"
-  - git push origin $TRAVIS_TAG
+#  - git config --local user.name "$USER_NAME"
+#  - git config --local user.email "$USER_EMAIL"
+#  - export TRAVIS_TAG=1.0.$TRAVIS_BUILD_NUMBER
+#  - git tag $TRAVIS_TAG -a -m "Generated tag from TravisCI build $TRAVIS_BUILD_NUMBER"
+#  - git push origin $TRAVIS_TAG
+- export TRAVIS_TAG="1.0.$TRAVIS_BUILD_NUMBER"
+- git config --local user.name "$USER_NAME"
+- git config --local user.email "$USER_EMAIL"
+- git tag "$TRAVIS_TAG" "$TRAVIS_COMMIT"
 
 deploy:
   provider: releases
+  tag_name: $TRAVIS_TAG
+  target_commitish: $TRAVIS_COMMIT
   api_key: $GITHUB_TOKEN
   file:
     - target/tweetsched-dto-1.0.$TRAVIS_BUILD_NUMBER.jar
   name: tweetsched-dto-1.0.$TRAVIS_BUILD_NUMBER
-  skip-cleanup: true
+  overwrite: true
+  skip_cleanup: true
   on:
     tags: true
     repo: Tweetsched/tweetsched-dto
