@@ -4,11 +4,12 @@ jdk: oraclejdk8
 branches:
   only:
     - master
+    - develop
 
-before_install: mvn package -DskipTests=true -DbuildNumber=$TRAVIS_BUILD_NUMBER
+before_install: gradle build -DbuildNumber=$TRAVIS_BUILD_NUMBER
 
 before_deploy:
-- export TRAVIS_TAG="1.0.$TRAVIS_BUILD_NUMBER"
+- export TRAVIS_TAG="1.$TRAVIS_BUILD_NUMBER"
 - echo "$TRAVIS_TAG" "$TRAVIS_COMMIT"
 - git config --local user.name "$USER_NAME"
 - git config --local user.email "$USER_EMAIL"
@@ -24,7 +25,7 @@ deploy:
   api_key: $GITHUB_TOKEN
   file_glob: true
   file:
-    - target/tweetsched-dto-1.0.$TRAVIS_BUILD_NUMBER.jar
+    - target/tweetsched-dto-1.$TRAVIS_BUILD_NUMBER.jar
   on:
     branch: master
     repo: Tweetsched/tweetsched-dto
