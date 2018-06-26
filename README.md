@@ -7,7 +7,7 @@ Tweetsched DTOs
 
 ## Requirements:
  - Java 8 or higher
- - Maven 3.3.3 or higher
+ - Gradle 4.8 or higher
 
 ## How to build:
-`mvn clean package`
+`gradle build -DbuildNumber=<<desired minor version>>`
