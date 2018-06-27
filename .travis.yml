@@ -4,7 +4,7 @@ jdk: oraclejdk8
 branches:
   only:
     - master
-    - develop
+    - release
 
 before_install: gradle build -DbuildNumber=$TRAVIS_BUILD_NUMBER
 
@@ -25,9 +25,9 @@ deploy:
   api_key: $GITHUB_TOKEN
   file_glob: true
   file:
-    - target/tweetsched-dto-1.$TRAVIS_BUILD_NUMBER.jar
+    - build/libs/tweetsched-dto-1.$TRAVIS_BUILD_NUMBER.jar
   on:
-    branch: master
+    branch: release
     repo: Tweetsched/tweetsched-dto
 
 notifications:
