@@ -4,7 +4,6 @@ jdk: oraclejdk8
 branches:
   only:
     - master
-    - release
 
 before_install: gradle build -DbuildNumber=$TRAVIS_BUILD_NUMBER
 
@@ -27,7 +26,7 @@ deploy:
   file:
     - build/libs/tweetsched-dto-1.$TRAVIS_BUILD_NUMBER.jar
   on:
-    branch: release
+    branch: master
     repo: Tweetsched/tweetsched-dto
 
 notifications:
