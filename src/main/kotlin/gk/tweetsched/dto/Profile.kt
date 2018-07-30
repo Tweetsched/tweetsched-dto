@@ -10,4 +10,5 @@ package gk.tweetsched.dto
  */
 data class Profile(var id: String? = null,
                    var name: String? = null,
-                   var passwordSha: String? = null)
+                   var passwordSha: String? = null,
+                   var role: Role? = null)
