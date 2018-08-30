@@ -11,4 +11,4 @@ package gk.tweetsched.dto
 data class Tweet(var id: String? = null,
                  var profileId: String? = null,
                  var message: String? = null,
-                 var publishedTo: Map<Service, Boolean>? = null)
+                 var requiredServices: List<Service>? = null)
